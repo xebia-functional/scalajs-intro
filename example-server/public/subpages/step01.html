@@ -1,0 +1,19 @@
+<h3>Pretty easy setup</h3>
+
+<p>Just three steps are required to setup Scala.js in your sbt project.</p>
+
+<p>1 - Adding the Scala.js sbt plugin is a one-liner in <code>project/plugins.sbt</code>:</p>
+
+<pre><code>addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.3")</code></pre>
+
+<p>2 - We also setup basic project settings and enable this plugin in the sbt build file (<code>build.sbt</code>, in the project root directory):</p>
+
+<pre><code>enablePlugins(ScalaJSPlugin)
+
+name := "Scala.js Tutorial"
+
+scalaVersion := "2.11.5"</code></pre>
+
+<p>3 - Last, we need a <code>project/build.properties</code> to specify the sbt version (<code>>= 0.13.7</code>):</p>
+
+<pre><code>sbt.version=0.13.7</code></pre>

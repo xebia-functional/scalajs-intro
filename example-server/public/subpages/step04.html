@@ -1,0 +1,27 @@
+<h3>DOM interactions</h3>
+
+<p>To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your <code>build.sbt</code>:</p>
+
+<pre><code>libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.0"</code></pre>
+
+<p>And then, (after <code>reload</code> sbt) we can deal with DOM elements. For example we can add a tag to the body of the page, rather than printing to the console. So we should import a couple of things:</p>
+
+<pre><code>import org.scalajs.dom
+import dom.document</code></pre>
+
+<p>We now create a method that allows us to append a <code>&lt;p&gt;</code> tag with a given text to a given node:</p>
+
+<pre><code>def appendPar(targetNode: dom.Node, text: String): Unit = {
+  val parNode = document.createElement("p")
+  val textNode = document.createTextNode(text)
+  parNode.appendChild(textNode)
+  targetNode.appendChild(parNode)
+}</code></pre>
+
+<p>Replace the call to <code>println</code> with a call to <code>appendPar</code> in the <code>main</code> method:</p>
+
+<pre><code>def main(): Unit = {
+  appendPar(document.body, "Hello World")
+}</code></pre>
+
+<p>To rebuild the JavaScript, simply invoke <code>~fastOptJS</code> again</p>

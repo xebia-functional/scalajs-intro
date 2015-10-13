@@ -1,0 +1,12 @@
+<h3>User interactions</h3>
+
+<p>This step shows how you can add a button and react to events on it by still just using the DOM (we will use jQuery in the next step). We want to add a button that adds another <code>&lt;p&gt;</code> tag to the body when it is clicked.</p>
+
+<pre><code>@JSExport
+def addClickedMessage(): Unit = {
+  appendPar(document.body, "You clicked the button!")
+}</code></pre>
+
+<p><p>Since we now have a method that is callable from JavaScript, all we have to do is add a button to our HTML and set its <code>onclick</code> attribute (make sure to add the button <em>before</em> the <code>&lt;script&gt;</code> tags):</p>
+
+<pre><code>&lt;button id=&quot;click-me-button&quot; type=&quot;button&quot; onclick=&quot;demo.webapp.LoveScalaJsApp().addClickedMessage()&quot;&gt;Click me!&lt;/button&gt;</code></pre>

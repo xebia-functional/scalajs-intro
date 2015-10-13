@@ -1,0 +1,33 @@
+@(message: String)(implicit request: RequestHeader)
+
+@content = {
+  <section id="header">
+    <h1>How to love Scala.js in 7 steps</h1>
+    <div class="stepwizard">
+      <div class="stepwizard-row" id="stepwizardWrapper"></div>
+    </div>
+  </section>
+
+  <section id="content">
+    <div class="side" id="content-left">
+      <div id="left_wrapper">
+
+        <div class="container">
+          <div class="jumbotron">
+            <h1>SCALA.JS IN 7 STEPS</h1>
+            <p class="lead">Or how functional programming met the client side. The Scala & Javascript rebel son. Mischiefs in the front-end. Choose your own title.</p>
+            <p><div id="learn-more" class="btn btn-lg btn-warning" role="button">LEARN MORE</div></p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="side" id="content-right">
+      <iframe id="right_wrapper" src="" frameborder="0" width="100%" height="100%">Your browser doesn't support iframes.</iframe>
+    </div>
+  </section>
+}
+@templates.main("Trivial example", content = content){
+  <script>example.Example().main()</script>
+}

@@ -1,0 +1,99 @@
+<h3>Building this demo!</h3>
+
+<p>The JavaScript of this simple demo is compiled from Scala. I hope that the how-to explanation makes you understand how cool is that.</p>
+
+<p>We start with this simple HTML layout:</p>
+
+<pre><code>&lt;section id=&quot;header&quot;&gt;
+    &lt;h1&gt;How to love Scala.js in 7 steps&lt;/h1&gt;
+    &lt;div class=&quot;stepwizard&quot;&gt;
+        &lt;div class=&quot;stepwizard-row&quot; id=&quot;stepwizardWrapper&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section id=&quot;content&quot;&gt;
+    &lt;div class=&quot;side&quot; id=&quot;content-left&quot;&gt;
+        &lt;div id=&quot;left_wrapper&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;side&quot; id=&quot;content-right&quot;&gt;
+        &lt;iframe id=&quot;right_wrapper&quot; src=&quot;&quot; frameborder=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+<p>Each step can be represented by this model <code>Step</code>:</p>
+
+<pre><code>case class Step(
+    id: Int,
+    name: String,
+    layout: String,
+    content_left: String,
+    content_right: Option[String] = None)</code></pre>
+	
+<p>And the set of steps that conform the demo can be defined as sequence of <code>Step</code> like this</p>
+
+<pre><code>val steps = Seq(
+    Step(1, "step1", "one", "step01.html"),
+    Step(2, "step2", "one", "step02.html"),
+    Step(3, "step3", "one", "step03.html"),
+    Step(4, "step4", "double", "step04.html", Option("step04_exp.html")),
+    Step(5, "step5", "double", "step05.html", Option("step05_exp.html")),
+    Step(6, "step6", "double", "step06.html", Option("step06_exp.html")),
+    Step(7, "step7", "one", "step07.html"))</code></pre>
+    
+    
+<p>Firstly we call a method to compose the navigation bar based on the steps:</p>
+
+<pre><code>def main(): Unit = {
+    steps.foreach(s => drawStepButton(s))
+}
+
+def drawStepButton(s: Step): Unit = {
+
+  val button = jQuery("&lt;div&gt;&lt;/div&gt;")
+      .attr(Map("type" -> "button", "class" -> "btn btn-circle").toJSDictionary)
+      .addClass(s.name)
+      .text(s.id.toString)
+      .click { (event:JQueryEventObject) => selectStep(s) }
+
+  val item = jQuery("&lt;div>&lt;/div&gt;")
+      .attr("class", "stepwizard-step")
+      .append(button)
+
+  jQuery("#stepwizardWrapper").append(item)
+}</code></pre>
+
+<p>As you can see each button listen the click event and call to <code>selectStep</code> when is fired. And this is the implementation:</p>
+
+<pre><code>def selectStep(step: Step): Unit = {
+  markSelected(step.name)
+  setLayout(step.layout)
+  fillLeft(step.content_left)
+  step.content_right match {
+    case Some(url) => fillRight(url)
+    case _ => Unit
+  }
+}
+
+def markSelected(name: String): Unit = {
+  jQuery(".stepwizard-step>.btn").removeClass("active")
+  jQuery(".stepwizard-step>."+name).addClass("active")
+}
+
+def setLayout(layOut: String): Unit = jQuery("body").removeClass().addClass(layOut)
+
+def fillLeft(path: String): Unit = {
+  jQuery("#left_wrapper").fadeOut(500, "linear", callback = { (data: js.Any) =>
+    jQuery.get(url = s"subpages/$path", success = { (data: js.Any) =>
+      jQuery("#left_wrapper").html(data.toString).fadeIn(500)
+    })
+  })
+}
+
+def fillRight(path: String): Unit = {
+  jQuery("#right_wrapper").fadeOut(100, "linear", callback = { (data: js.Any) =>
+    jQuery("#right_wrapper").attr("src", "subpages/" + path).fadeIn(900)
+  })
+}</code></pre>
+
+You can check out the complete project in <a href="https://github.com/47deg/scala-js-demo" title="Scala.js DEMO">https://github.com/47deg/scala-js-demo</a>
+    

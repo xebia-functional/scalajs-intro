@@ -1,0 +1,30 @@
+<h3>Using jQuery</h3>
+
+<p>We will transform our current mini-application to use this paradigm with the help of jQuery. Also we will replace all usages of the DOM API with jQuery. For that, replace the scalajs-dom dependecy by:</p>
+
+<pre><code>libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.8.0"</code></pre>
+
+<p>In <code>LoveScalaJsApp.scala</code>, remove the imports for the DOM, and add the import for jQuery:</p>
+
+<pre><code>import org.scalajs.jquery.jQuery</code></pre>
+
+<p>The Scala.js sbt plugin provides a mechanism for libraries to declare the plain JavaScript libraries they depend on and bundle them in a single file. All you have to do is activate this and then include the file. So in your <code>build.sbt</code>, set:</p>
+
+<pre><code>skip in packageJSDependencies := false</code></pre>
+
+<p>After reloading and rerunning <code>fastOptJS</code>, this will create <code>scala-js-tutorial-jsdeps.js</code> containing all JavaScript libraries next to the main JavaScript file. We can then simply include this file and don't need to worry about JavaScript libraries anymore:</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;./target/scala-2.11/scala-js-tutorial-jsdeps.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+<p>Now we can use jQuery to add an event handler to the button, so we should remove the <code>onclick</code> attribute of our <code>&lt;button&gt;</code>. And we create an new method <code>setupUI</code> to define some interaction. We also move the "Hello World" message into this function.</p>
+
+<pre><code>def setupUI(): Unit = {
+  jQuery("#click-me-button").click(addClickedMessage _)
+  jQuery("body").append("&lt;p&gt;Hello World&lt;/p&gt;")
+}</code></pre>
+
+<p>Since we do not call <code>addClickedMessage</code> from plain JavaScript anymore, we can remove the <code>@JSExport</code> annotation (and the corresponding import). And finally, we add a last call to <code>jQuery</code> in the main method, in order to execute <code>setupUI</code>, once the DOM is loaded:</p>
+
+<pre><code>def main(): Unit = {
+  jQuery(setupUI _)
+}</code></pre>

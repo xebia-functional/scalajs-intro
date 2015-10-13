@@ -1,0 +1,30 @@
+<h3>Integrating with HTML</h3>
+
+<p>Now that we have a simple JavaScript application, we would like to use it in an HTML page. To do this, we need two steps:</p>
+
+<h4>1.- Generate JavaScript</h4>
+
+<p>With the sbt <code>fastOptJS</code> task, we can generate a single JavaScript. This will perform some fast optimizations and generate the <code>target/scala-2.11/lovescalajs-fastopt.js</code> file containing the JavaScript code.</p>
+
+<h4>2.- Create the HTML Page</h4>
+
+<p>To load and launch the created JavaScript, you will need an HTML file. Create the file <code>demo-page.html</code> in the project root with the following content:</p>
+
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Love Scala.js Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./target/scala-2.11/lovescalajs-fastopt.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    demo.webapp.LoveScalaJsApp().main();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>If we open the page, we can see in the JavaScript console: </p>
+
+<pre><code>Hello world!</code></pre>

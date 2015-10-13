@@ -1,0 +1,30 @@
+<h3>Easily integrated into your app</h3>
+
+<p>A <strong>Hello World</strong> example: Firstly, we add a very simple <code>LoveScalaJsApp</code> app in the <code>demo.webapp</code> package.<br>Create the file <code>src/main/scala/demo/webapp/LoveScalaJsApp.scala</code>:
+
+<pre><code>package demo.webapp
+
+import scala.scalajs.js.JSApp
+
+object LoveScalaJsApp extends JSApp {
+  def main(): Unit = {
+    println("Hello world!")
+  }
+}</code></pre>
+
+<p>To run this, simply launch <code>sbt</code> and invoke the <code>run</code> task:</p>
+
+<pre><code>$ sbt
+> run
+[info] Compiling 1 Scala source to (...)/scala-2.11/classes...
+[info] Running tutorial.webapp.TutorialApp
+Hello world!
+[success] Total time: 28 s, completed May 18, 2015 9:22:46 PM</code></pre>
+
+<h5>Note:</h5>
+
+<p>So your code has actually been executed by the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino">Rhino</a> JavaScript interpreter which is cool because it runs out of the box, without having to install anything. But it is terribly slow. In general, you do not want to use it for your day-to-day development.</p>
+
+<p><a href="http://nodejs.org/">Node.js</a> is a much more performant JavaScript engine. To run your code with Node.js, you need to install it, and set <code>FastOptStage</code> in your <code>build.sbt</code>:</p>
+
+<pre><code>scalaJSStage in Global := FastOptStage</code></pre>
