@@ -1,19 +1,37 @@
 package example
 
+import org.scalajs.dom
+
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters.JSRichGenMap
+import scala.scalajs.js.annotation.JSExport
 import org.scalajs.jquery.{jQuery => $, JQueryEventObject}
 
 object ExampleJS extends js.JSApp {
 
   def main(): Unit = {
-    $.ajaxSetup(Map("cache" -> false))
-    steps.foreach(s => drawStepButton(s))
-    $("#learn-more").click { (event: JQueryEventObject) => selectStep(steps.head) }
+    goHome()
+//    $.ajaxSetup(Map("cache" -> false))
+
+    $("body").keydown((event: dom.KeyboardEvent) => {
+      event.keyCode match{
+        case 37 => move(-1)
+        case 39 => move(1)
+        case 38 => move(5)
+        case 40=> move(-5)
+        case 48=> move(steps.size * -1)
+        case 72=> goHome()
+        case x => println(s"Pressed invalid key $x")
+      }
+    })
+
   }
 
+  val home = Step(0, "home", "", "home.html")
+
+  def goHome() = selectStep(home)
+
   val steps = Seq(
-    Step(1, "step1", "one", "step01.html"),
+    Step(1, "step1", "one", "step00.html"),
     Step(2, "step2", "one", "step02.html"),
     Step(3, "step3", "one", "step03.html"),
     Step(4, "step4", "double", "step04.html", Option("step04_exp.html")),
@@ -28,23 +46,8 @@ object ExampleJS extends js.JSApp {
       content_left: String,
       content_right: Option[String] = None)
 
-  def drawStepButton(s: Step): Unit = {
-
-    val button = $("<div></div>")
-        .attr(Map("type" -> "button", "class" -> "btn btn-circle").toJSDictionary)
-        .addClass(s.name)
-        .text(s.id.toString)
-        .click { (event: JQueryEventObject) => selectStep(s) }
-
-    val item = $("<div></div>")
-        .attr("class", "stepwizard-step")
-        .append(button)
-
-    $("#stepwizardWrapper").append(item)
-  }
 
   def selectStep(step: Step): Unit = {
-    markSelected(step.name)
     setLayout(step.layout)
     fillLeft(step.content_left)
     step.content_right match {
@@ -53,10 +56,29 @@ object ExampleJS extends js.JSApp {
     }
   }
 
-  def markSelected(name: String): Unit = {
-    $(".stepwizard-step>.btn").removeClass("active")
-    $(".stepwizard-step>." + name).addClass("active")
+  @JSExport
+  def move(sum: Int): Unit = {
+    val next =  $("#current").text().toInt + sum
+    val max = steps.size-1
+    next match {
+      case m if m <= 0 => {
+        $("#prev").attr("disabled", "disabled")
+        $("#current").text(0.toString)
+        selectStep(steps.head)
+      }
+      case m if m >= max => {
+        $("#next").attr("disabled", "disabled")
+        $("#current").text(max.toString)
+        selectStep(steps.last)
+      }
+      case _ =>{
+        $("#next").add("#prev").removeAttr("disabled")
+        $("#current").text(next.toString)
+        selectStep(steps(next))
+      }
+    }
   }
+
 
   def setLayout(layOut: String): Unit = $("body").removeClass().addClass(layOut)
 
