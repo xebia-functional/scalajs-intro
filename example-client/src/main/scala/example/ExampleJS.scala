@@ -24,7 +24,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-    move(16)
+    move(26)
 
   }
 
@@ -55,6 +55,12 @@ object ExampleJS extends js.JSApp {
     Step("double", "step14.html", Option("step13_exp.html")),
     Step("one", "step15.html"),
     Step("double", "step15.html", Option("step15_exp.html")),
+    Step("one", "step16.html"),
+    Step("double", "step16.html", Option("step16_exp.html")),
+    Step("one", "step17.html"),
+    Step("double", "step17.html", Option("step17_exp.html")),
+    Step("one", "step18.html"),
+    Step("double", "step18.html", Option("step18_exp.html")),
     Step("one", "step00.html"))
 
   case class Step(

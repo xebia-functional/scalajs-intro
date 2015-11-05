@@ -1,6 +1,7 @@
 package example
 
 import java.lang.Math._
+
 import org.scalajs.dom
 import org.scalajs.dom.{CanvasRenderingContext2D, html}
 
@@ -24,6 +25,7 @@ object Osciloscope04  {
         drawStuff(0)
       }
       case _ => dom.setTimeout(() => {
+
 val y = sin(x/w * 100) * h/40 + 200
 ctx.fillStyle = "#FF9900"
 ctx.fillRect(x, y, 3, 3)

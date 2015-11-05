@@ -1,0 +1,17 @@
+<h1 id="userinteractionandinteroperabilitywithjavascript">User interaction and interoperability with Javascript</h1>
+
+<p>Expose a Scala method, to be called from Javascript code is easy, you only have to add the annotation <code>@JSExport</code> over the method:</p>
+
+<pre><code>@JSExport
+def addParagraph(targetNode: dom.Node, text: String): Unit = {
+    val parNode = document.createElement(&quot;p&quot;)
+    val textNode = document.createTextNode(text)
+    parNode.appendChild(textNode)
+    targetNode.appendChild(parNode)
+}
+</code></pre>
+
+<p>This way we can bind a click event to fire the method:</p>
+
+<pre><code>&lt;button type=&quot;button&quot; onclick=&quot;demo.UserInteraction().addParagraph(document.body, 'Button pushed')&quot;&gt;Click me!&lt;/button&gt;
+</code></pre>
