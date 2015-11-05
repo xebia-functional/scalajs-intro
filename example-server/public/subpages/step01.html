@@ -1,19 +1,13 @@
-<h3>Pretty easy setup</h3>
+<h1 id="letstalkaboutjavascriptaslanguage">Let&#8217;s talk about Javascript as language</h1>
 
-<p>Just three steps are required to setup Scala.js in your sbt project.</p>
+<ul>
+    <li>A fact: Is the only language supported by web browsers that allow to write interactive web applications.</li>
+</ul>
+<!--Adobe Flash, Java Applets and Silverlight are all but dead: historically they have been the source of security vulnerabilities, none of them are available on the mobile browsers of Android or iOS or Windows8+.-->
 
-<p>1 - Adding the Scala.js sbt plugin is a one-liner in <code>project/plugins.sbt</code>:</p>
-
-<pre><code>addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.3")</code></pre>
-
-<p>2 - We also setup basic project settings and enable this plugin in the sbt build file (<code>build.sbt</code>, in the project root directory):</p>
-
-<pre><code>enablePlugins(ScalaJSPlugin)
-
-name := "Scala.js Tutorial"
-
-scalaVersion := "2.11.5"</code></pre>
-
-<p>3 - Last, we need a <code>project/build.properties</code> to specify the sbt version (<code>>= 0.13.7</code>):</p>
-
-<pre><code>sbt.version=0.13.7</code></pre>
+<ul>
+    <li><p>For small-scale is OK, the verbosity or the surprising behaviour are acceptable for few hundred lines of code-base.</p></li>
+    <li><p>However, is not an easy language to work when your code-base extends to thousands, tens or hundreds of thousands of lines of code due to the untyped nature of the language. It can be hard to test all code and consequently refactoring is far from trivial, becoming dangerous, indeed.</p></li>
+    <li><p>The big deal: The language has left many things unspecified, yet at the same time provides the ability to emulate them in several ways.</p></li>
+</ul>
+<!--For instance: There are dozen different ways for defining a class. It's usual that large projects use third-party libraries that do these basic things in a different way that your own code.-->

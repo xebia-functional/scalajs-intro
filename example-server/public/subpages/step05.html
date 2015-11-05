@@ -1,12 +1,12 @@
-<h3>User interactions</h3>
+<h1 id="nonshared-codedrawbacks">Non shared-code drawbacks</h1>
 
-<p>This step shows how you can add a button and react to events on it by still just using the DOM (we will use jQuery in the next step). We want to add a button that adds another <code>&lt;p&gt;</code> tag to the body when it is clicked.</p>
+<ul>
+  <li><p>Traditionally the client-side code and server-side code has been written in separate languages</p></li>
+  <li><p>Server: PHP, Perl, Python, Ruby, Java, etc. | Client: Javascript</p></li>
+</ul>
+<!--- This means that algorithms were often implemented twice, constants copied-&-pasted, or awkward Ajax calls are made in an attempt to centralize the logic in one place (the server) -->
 
-<pre><code>@JSExport
-def addClickedMessage(): Unit = {
-  appendPar(document.body, "You clicked the button!")
-}</code></pre>
-
-<p><p>Since we now have a method that is callable from JavaScript, all we have to do is add a button to our HTML and set its <code>onclick</code> attribute (make sure to add the button <em>before</em> the <code>&lt;script&gt;</code> tags):</p>
-
-<pre><code>&lt;button id=&quot;click-me-button&quot; type=&quot;button&quot; onclick=&quot;demo.webapp.LoveScalaJsApp().addClickedMessage()&quot;&gt;Click me!&lt;/button&gt;</code></pre>
+<ul>
+  <li>What about Node.js? Yes you can re-use the same code on the server as you can on the client. But now we have the problems of Javascript in the server.</li>
+</ul>
+<!--"Write everything twice" to "Write everything twice, or write everything in Javascript"-->

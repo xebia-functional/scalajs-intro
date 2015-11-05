@@ -1,0 +1,28 @@
+<h1 id="patternmatching">Pattern matching</h1>
+
+<p>Scala has a built-in general pattern matching mechanism. It allows to match on any sort of data with a first-match policy.</p>
+
+<pre><code>def matchTest(x: Int): String = x match {
+    case 1 =&gt; &quot;one&quot;
+    case 2 =&gt; &quot;two&quot;
+    case _ =&gt; &quot;many&quot;
+}
+</code></pre>
+
+<p>For instance, we can use pattern matching for creating the step function:</p>
+
+<pre><code>def stepFunc(x: Double): Double = x % 10 &gt; 5 match {
+    case true =&gt; 0
+    case _ =&gt; 2
+}
+</code></pre>
+
+<p>Can I create a new graph with <code>stepFunc</code>?</p>
+
+<pre><code>val stepGraph = Graph(2, Color(&quot;blue&quot;), stepFunc)
+</code></pre>
+
+<p>With a new list of Graphs:</p>
+
+<pre><code>val graphs = List(zeroGraph, sinGraph, stepGraph)
+</code></pre>

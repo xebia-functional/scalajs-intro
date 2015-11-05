@@ -1,0 +1,23 @@
+<h1 id="recursivelyinsteadofmutability">Recursively instead of mutability</h1>
+
+<pre><code>def drawStuff(implicit ctx: CanvasRenderingContext2D) {
+    var x = 0.0
+    dom.setInterval(() =&gt; {
+        x = x + 1
+        ctx.fillStyle = &quot;#FF9900&quot;
+        ctx.fillRect(x, 100, 30, 30)
+    }, 10)
+}
+</code></pre>
+
+<pre><code>def drawStuff(x: Double)(implicit ctx: CanvasRenderingContext2D) {
+    dom.setTimeout(() =&gt; {
+        ctx.fillStyle = &quot;#FF9900&quot;
+        ctx.fillRect(x, 100, 30, 30)
+        drawStuff(x+1)
+    }, 10)
+}
+</code></pre>
+
+<pre><code>drawStuff(0)
+</code></pre>

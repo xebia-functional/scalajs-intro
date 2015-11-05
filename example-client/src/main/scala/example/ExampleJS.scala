@@ -9,7 +9,7 @@ import org.scalajs.jquery.{jQuery => $, JQueryEventObject}
 object ExampleJS extends js.JSApp {
 
   def main(): Unit = {
-    goHome()
+//    goHome()
 //    $.ajaxSetup(Map("cache" -> false))
 
     $("body").keydown((event: dom.KeyboardEvent) => {
@@ -24,24 +24,40 @@ object ExampleJS extends js.JSApp {
       }
     })
 
+    move(16)
+
   }
 
-  val home = Step(0, "home", "", "home.html")
+  val home = Step("", "home.html")
 
   def goHome() = selectStep(home)
 
   val steps = Seq(
-    Step(1, "step1", "one", "step00.html"),
-    Step(2, "step2", "one", "step02.html"),
-    Step(3, "step3", "one", "step03.html"),
-    Step(4, "step4", "double", "step04.html", Option("step04_exp.html")),
-    Step(5, "step5", "double", "step05.html", Option("step05_exp.html")),
-    Step(6, "step6", "double", "step06.html", Option("step06_exp.html")),
-    Step(7, "step7", "one", "step07.html"))
+    Step("one", "step00.html"),
+    Step("one", "step01.html"),
+    Step("one", "step01_a.html"),
+    Step("one", "step02.html"),
+    Step("one", "step03.html"),
+    Step("one", "step04.html"),
+    Step("one", "step05.html"),
+    Step("one", "step06.html"),
+    Step("one", "step07.html"),
+    Step("one", "step08.html"),
+    Step("one", "step09.html"),
+    Step("one", "step10.html"),
+    Step("double", "step10.html", Option("step10_exp.html")),
+    Step("one", "step11.html"),
+    Step("double", "step11.html", Option("step11_exp.html")),
+    Step("one", "step12.html"),
+    Step("double", "step12.html", Option("step12_exp.html")),
+    Step("one", "step13.html"),
+    Step("one", "step14.html"),
+    Step("double", "step14.html", Option("step13_exp.html")),
+    Step("one", "step15.html"),
+    Step("double", "step15.html", Option("step15_exp.html")),
+    Step("one", "step00.html"))
 
   case class Step(
-      id: Int,
-      name: String,
       layout: String,
       content_left: String,
       content_right: Option[String] = None)

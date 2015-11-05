@@ -77,7 +77,7 @@ body {
 #content-left::-moz-selection { background: #f3ce85; }
 
 #content-right{
-  background-color: #f3ce85;
+  background-color: #ffffff;
   color: #333;
   position: absolute;
   right: 0;
@@ -116,6 +116,7 @@ a{color: #fff;}
   font-size: 20px;
   line-height: 2.00;
   border-radius: 30px;
+  background-color: #555;
 }
 .btn-circle:focus,
 .btn-circle:active {outline:0 !important;}
@@ -150,8 +151,8 @@ a{color: #fff;}
   border-radius: 70px;
 }
 
-pre{border: 0px solid red; background-color: rgba(255,255,255,0); font-size: 12px; color:#D6EDF5; }
-code{border: 0px solid red; background-color: transparent; color:#ff9900; padding: 2px; line-height: 12px; vertical-align: middle;}
+pre{border: 0px solid red; background-color: rgba(0,0,0,0.1); font-size: 12px; color:#D6EDF5; }
+code{border: 0px solid red; background-color: transparent; color: #7ee9ff; padding: 2px; line-height: 12px; vertical-align: middle;}
 
 body.one #header, body.double #header{height: 150px}
 body.one #content, body.double #content{top:150px;
@@ -164,8 +165,18 @@ body.one #content>#content-left{width: 100%; padding-left: 200px; padding-right:
 body.one #content>#content-right{width: 0%;}
 
 body.double #content>#content-left{width: 50%;}
-body.double #content>#content-right{width: 50%; padding: 20px;}
+body.double #content>#content-right{width: 50%;}
 
+
+body.one #content>#content-left>#left_wrapper>h1{
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+body.double #content>#content-left>#left_wrapper>h1{
+  margin-bottom: 30px;
+  font-weight: bold;
+}
 
 body.one #content>#content-left>#left_wrapper>h1,
 body.one #content>#content-left>#left_wrapper>h2,
@@ -174,5 +185,9 @@ body.one #content>#content-left>#left_wrapper>h3{
 }
 
 body.one #content>#content-left>#left_wrapper{font-size: 1.4em;}
-body.one #content>#content-left>#left_wrapper>pre{font-size: 0.7em; margin: 20px 0px;}
-body.one #content>#content-left>#left_wrapper>pre>code{color:#ff9900;}
+body.one #content>#content-left>#left_wrapper>pre{font-size: 0.8em; margin: 20px 0px;}
+body.one #content>#content-left>#left_wrapper>pre>code{color:#7ee9ff;}
+
+body.double #content>#content-left>#left_wrapper{font-size: 1.2em;}
+body.double #content>#content-left>#left_wrapper>pre{font-size: 0.8em; margin: 20px 0px;}
+body.double #content>#content-left>#left_wrapper>pre>code{color:#7ee9ff;}
