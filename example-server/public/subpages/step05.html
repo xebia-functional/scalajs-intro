@@ -1,12 +1,16 @@
-<h1 id="nonshared-codedrawbacks">Non shared-code drawbacks</h1>
+<h1 id="nonshared-codedrawbacks">Shared code Server-Client</h1>
 
 <ul>
-  <li><p>Traditionally the client-side code and server-side code has been written in separate languages</p></li>
-  <li><p>Server: PHP, Perl, Python, Ruby, Java, etc. | Client: Javascript</p></li>
+  <li>Traditionally the client-side code and server-side code has been written in separate languages</li>
+  <li>Algorithms are often implemented twice</li>
+  <li>Abusive Ajax calls to centralize the logic</li>
+  <li>What about Node.js? Yes... but not. "Write everything twice to write everything in Javascript"</li>
 </ul>
-<!--- This means that algorithms were often implemented twice, constants copied-&-pasted, or awkward Ajax calls are made in an attempt to centralize the logic in one place (the server) -->
+
+<p>With Scala.js, you can utilize the same libraries you use writing your Scala servers when writing your Scala web clients!</p>
 
 <ul>
-  <li>What about Node.js? Yes you can re-use the same code on the server as you can on the client. But now we have the problems of Javascript in the server.</li>
+  <li>Not having to find two libraries to do a particular common task</li>
+  <li>Not needing to implement the same algorithms twice</li>
+  <li>Avoid duplicating logic between the client and server</li>
 </ul>
-<!--"Write everything twice" to "Write everything twice, or write everything in Javascript"-->
