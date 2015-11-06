@@ -9,7 +9,7 @@ import org.scalajs.jquery.{jQuery => $, JQueryEventObject}
 object ExampleJS extends js.JSApp {
 
   def main(): Unit = {
-//    goHome()
+    goHome()
 //    $.ajaxSetup(Map("cache" -> false))
 
     $("body").keydown((event: dom.KeyboardEvent) => {
@@ -24,7 +24,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-    move(26)
+//    move(28)
 
   }
 
@@ -61,7 +61,9 @@ object ExampleJS extends js.JSApp {
     Step("double", "step17.html", Option("step17_exp.html")),
     Step("one", "step18.html"),
     Step("double", "step18.html", Option("step18_exp.html")),
-    Step("one", "step00.html"))
+    Step("one", "step19.html"),
+    Step("double", "step19.html", Option("step19_exp.html")),
+    Step("one", "step20.html"))
 
   case class Step(
       layout: String,
