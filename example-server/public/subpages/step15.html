@@ -9,20 +9,16 @@
 }
 </code></pre>
 
-<p>For instance, we can use pattern matching for creating the step function:</p>
+<p>Pattern matching can wildcard parts of expressions:</p>
 
-<pre><code>def stepFunc(x: Double): Double = x % 10 &gt; 5 match {
-    case true =&gt; 0
-    case _ =&gt; 2
-}
-</code></pre>
+<pre><code>def techs(expr: Any) = expr match {
+    case ("Javi", _) => "Scala"
+    case ("Israel", "Frontend") => "Javascript"
+    case ("Rafa", "Frontend") => "Scala JS"
+    case (_, "iOS") => "Swift"
+    case _ => "Scala"
+}</code></pre>
 
-<p>Can I create a new graph with <code>stepFunc</code>?</p>
+<pre><code>> techs("Javi", "Android") //Scala
+> techs("Ana", "iOS") //Swift</code></pre>
 
-<pre><code>val stepGraph = Graph(2, Color(&quot;blue&quot;), stepFunc)
-</code></pre>
-
-<p>With a new list of Graphs:</p>
-
-<pre><code>val graphs = List(zeroGraph, sinGraph, stepGraph)
-</code></pre>

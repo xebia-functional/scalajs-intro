@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sbt stage deployHeroku
+sbt deployHeroku

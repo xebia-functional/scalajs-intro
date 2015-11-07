@@ -1,0 +1,19 @@
+<h1 id="patternmatching">Pattern matching</h1>
+
+<p>To pattern match against a List:</p>
+
+<pre><code>val secondElement = List(1, 2, 3) match {
+    case x :: xs => xs.head
+    case _ => 0
+}</code></pre>
+
+<pre><code>val secondElement = List(1,2,3) match {
+    case x :: y :: xs => y
+    case _ => 0
+}</code></pre>
+
+<pre><code>val secondElement = List(1) match {
+    case x :: y :: xs => y
+    case _ => 0
+}</code></pre>
+

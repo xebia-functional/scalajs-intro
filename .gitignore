@@ -1,31 +1,11 @@
-logs
 target/
-project/plugins/project/
-project/project/
-project/target/
-target
-tmp
-.history
-dist
-.idea
-*.iml
-/out
-.idea_modules
+.cache
 .classpath
 .project
-/RUNNING_PID
-.settings
+.settings/
+/scalalib/fetchedSources/
+/partest/fetchedSources/
+/cli/pack/
+/.idea/
+/.idea_modules/
 
-scalajvm/upload/*
-
-# temp files
-.~*
-*~
-*.orig
-
-# eclipse
-.scala_dependencies
-.buildpath
-.cache
-.target
-bin/

@@ -15,7 +15,9 @@ object ExampleJS extends js.JSApp {
     $("body").keydown((event: dom.KeyboardEvent) => {
       event.keyCode match{
         case 37 => move(-1)
+        case 33 => move(-1)
         case 39 => move(1)
+        case 34 => move(1)
         case 38 => move(5)
         case 40=> move(-5)
         case 48=> move(steps.size * -1)
@@ -24,7 +26,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-//    move(28)
+//    move(35)
 
   }
 
@@ -34,8 +36,13 @@ object ExampleJS extends js.JSApp {
 
   val steps = Seq(
     Step("one", "step00.html"),
-    Step("one", "step01.html"),
     Step("one", "step01_a.html"),
+    Step("one", "step01_b.html"),
+    Step("one", "step01_c.html"),
+    Step("one", "step01_d.html"),
+    Step("one", "step01_e.html"),
+    Step("one", "step01_f.html"),
+    Step("one", "step01.html"),
     Step("one", "step02.html"),
 //    Step("one", "step03.html"),
     Step("one", "step04.html"),
@@ -54,16 +61,20 @@ object ExampleJS extends js.JSApp {
     Step("one", "step14.html"),
     Step("double", "step14.html", Option("step13_exp.html")),
     Step("one", "step15.html"),
-    Step("double", "step15.html", Option("step15_exp.html")),
+    Step("one", "step15_b.html"),
+    Step("one", "step15_a.html"),
+    Step("double", "step15_a.html", Option("step15_exp.html")),
     Step("one", "step16.html"),
     Step("double", "step16.html", Option("step16_exp.html")),
+    Step("double", "step16_a.html", Option("step16_a_exp.html")),
     Step("one", "step17.html"),
     Step("double", "step17.html", Option("step17_exp.html")),
     Step("one", "step18.html"),
     Step("double", "step18.html", Option("step18_exp.html")),
     Step("one", "step19.html"),
     Step("double", "step19.html", Option("step19_exp.html")),
-    Step("one", "step20.html"))
+    Step("one", "step20.html"),
+    Step("one", "step21.html"))
 
   case class Step(
       layout: String,
