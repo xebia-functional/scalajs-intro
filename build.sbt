@@ -36,13 +36,4 @@ lazy val exampleClient = (project in file("example-client")).settings(
 // loads the jvm project at sbt startup
 onLoad in Global := (Command.process("project exampleServer", _: State)) compose (onLoad in Global).value
 
-val stage = taskKey[Unit]("Stage and clean task")
-
-stage := {
-  (stage in Universal).value
-  if (sys.env.getOrElse("POST_STAGE_CLEAN", "false").equals("true")) {
-    println("cleaning...")
-    sbt.IO.delete(baseDirectory.value / "my-subdir")
-  }
-}
 
