@@ -35,4 +35,7 @@ lazy val exampleClient = (project in file("example-client")).settings(
 // loads the jvm project at sbt startup
 onLoad in Global := (Command.process("project exampleServer", _: State)) compose (onLoad in Global).value
 
+WebKeys.webTarget := target.value / "scala-web"
+
+artifactPath in PlayKeys.playPackageAssets := WebKeys.webTarget.value / (artifactPath in PlayKeys.playPackageAssets).value.getName
 
