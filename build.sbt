@@ -17,6 +17,7 @@ lazy val exampleServer = (project in file("example-server")).settings(
     "org.webjars" %% "webjars-play" % "2.3.0",
     "org.webjars" % "jquery" % "2.1.1"
   ),
+  herokuAppName in Compile := "scalajs-intro",
   EclipseKeys.skipParents in ThisBuild := false
 ).enablePlugins(PlayScala).
   aggregate(clients.map(projectToRef): _*)
@@ -34,8 +35,3 @@ lazy val exampleClient = (project in file("example-client")).settings(
 
 // loads the jvm project at sbt startup
 onLoad in Global := (Command.process("project exampleServer", _: State)) compose (onLoad in Global).value
-
-WebKeys.webTarget := target.value / "scala-web"
-
-artifactPath in PlayKeys.playPackageAssets := WebKeys.webTarget.value / (artifactPath in PlayKeys.playPackageAssets).value.getName
-
