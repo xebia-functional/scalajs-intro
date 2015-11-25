@@ -28,7 +28,6 @@ object Osciloscope03  {
         drawStuff(x+1)
       }, 10)
     }
-
   }
 
   def resizeCanvas(implicit ctx: CanvasRenderingContext2D) = {

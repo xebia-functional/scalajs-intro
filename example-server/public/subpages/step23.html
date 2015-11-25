@@ -1,0 +1,58 @@
+<pre><code>def drawStuff(x: Double)(implicit ctx: CanvasRenderingContext2D) {
+    val (h, w) = (ctx.canvas.height, ctx.canvas.width)
+
+    (x + 1) % w match{
+      case 0 => {
+        ctx.clearRect(0, 0, w, h)
+        drawStuff(0)
+      }
+      case _ => dom.setTimeout(() => {
+        ctx.fillStyle = "#FF9900"
+        ctx.fillRect(x, 100, 30, 30)
+        drawStuff(x+1)
+      }, 10)
+    }
+  }
+</code></pre>
+
+<pre><code>$c_Lexample_Osciloscope04$.prototype.drawStuff__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(x, ctx) {
+  x$2: {
+    _drawStuff: while (true) {
+      var _1$mcI$sp = $uI(ctx["canvas"]["height"]);
+      var _2$mcI$sp = $uI(ctx["canvas"]["width"]);
+      matchEnd3: {
+        var x$1_$_$$und1$f;
+        var x$1_$_$$und2$f;
+        var x$1_$_$$und1$mcI$sp$f;
+        var x$1_$_$$und2$mcI$sp$f;
+        var x$1_$_$$und1$f = null;
+        var x$1_$_$$und2$f = null;
+        var x$1_$_$$und1$mcI$sp$f = _1$mcI$sp;
+        var x$1_$_$$und2$mcI$sp$f = _2$mcI$sp;
+        break matchEnd3
+      };
+      var h$2 = x$1_$_$$und1$mcI$sp$f;
+      var w$2 = x$1_$_$$und2$mcI$sp$f;
+      var x1$2 = ((1 + x) % w$2);
+      if ((x1$2 === 0)) {
+        ctx["clearRect"](0.0, 0.0, w$2, h$2);
+        x = 0.0;
+        continue _drawStuff
+      } else {
+        $g["setTimeout"]((function(x$2, ctx$2, h$1, w$1) {
+          return (function() {
+            var a = (100 * (x$2 / w$1));
+            var y = (200 + (($uD($g["Math"]["sin"](a)) * h$1) / 40));
+            ctx$2["fillStyle"] = "#FF9900";
+            ctx$2["fillRect"](x$2, y, 3.0, 3.0);
+            $m_Lexample_Osciloscope04$().drawStuff__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V((1 + x$2), ctx$2)
+          })
+        })(x, ctx, h$2, w$2), 10.0)
+      };
+      break x$2
+    }
+  }
+});
+</code></pre>
+
+

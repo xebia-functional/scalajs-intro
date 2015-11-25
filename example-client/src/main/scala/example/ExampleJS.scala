@@ -26,7 +26,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-//    move(35)
+//    move(37)
 
   }
 
@@ -74,7 +74,9 @@ object ExampleJS extends js.JSApp {
     Step("one", "step19.html"),
     Step("double", "step19.html", Option("step19_exp.html")),
     Step("one", "step20.html"),
-    Step("one", "step21.html"))
+    Step("one", "step21.html"),
+    Step("one", "step22.html"),
+    Step("one", "step23.html"))
 
   case class Step(
       layout: String,
