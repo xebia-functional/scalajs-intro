@@ -26,7 +26,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-//    move(37)
+//    move(0¡)
 
   }
 
