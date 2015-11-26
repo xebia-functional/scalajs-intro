@@ -1,8 +1,10 @@
+import sbt._
+import sbt.Keys._
+import sbt.Project.projectToRef
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import play.PlayScala
-import playscalajs.ScalaJSPlay
-import sbt.Project.projectToRef
 import play.PlayImport.PlayKeys._
+import playscalajs.ScalaJSPlay
 
 lazy val clients = Seq(exampleClient)
 lazy val scalaV = "2.11.6"
@@ -13,6 +15,7 @@ lazy val exampleServer = (project in file("example-server")).settings(
   scalaJSProjects := clients,
   pipelineStages := Seq(scalaJSProd, gzip),
   libraryDependencies ++= Seq(
+    "com.typesafe.play" %% "play-ws" % "2.3.7",
     "com.vmunier" %% "play-scalajs-scripts" % "0.1.0",
     "org.webjars" %% "webjars-play" % "2.3.0",
     "org.webjars" % "jquery" % "2.1.1"
