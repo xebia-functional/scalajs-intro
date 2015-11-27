@@ -30,7 +30,6 @@ lazy val exampleClient = (project in file("example-client")).settings(
   persistLauncher := true,
   persistLauncher in Test := false,
   skip in packageJSDependencies := false,
-  scalaJSStage in Global := FastOptStage,
   unmanagedSourceDirectories in Compile := Seq((scalaSource in Compile).value),
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % "0.8.0"
