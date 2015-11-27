@@ -11,6 +11,7 @@ import scala.concurrent.Future
 import controllers.messages.ApiRandomUserImplicits._
 import controllers.messages.ApiWeatherImplicits._
 import controllers.messages.CommonImplicits._
+import scala.util.control.NonFatal
 
 object ApiController
   extends Controller
@@ -49,11 +50,11 @@ object ApiController
 
     val holder : WSRequestHolder = WS.url(s"http://api.openweathermap.org/data/2.5/weather?zip=$postalCode,$countryCode&appid=$appId")
 
-    val futureResponse : Future[WSResponse] = holder.get()
-
-    futureResponse map { response =>
+    holder.get().map { response =>
       val weatherResponse = response.json.as[ApiWeatherResponse]
       weatherResponse.weather map toWeather
+    } recover {
+      case NonFatal(t) => Seq(randomWeather)
     }
   }
 
