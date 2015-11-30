@@ -46,6 +46,7 @@ object ExampleJS extends js.JSApp {
     Step("step02"),
 //    Step("step03"),
     Step("step04"),
+    Step("step04_fp"),
     Step("step05"),
 //    Step("step06"),
     Step("step07"),
