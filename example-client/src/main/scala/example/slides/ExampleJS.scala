@@ -63,6 +63,8 @@ object ExampleJS extends js.JSApp {
     Step("step15_b"),
     Step("step15_a"),
     Step("step15_a", "step15_exp"),
+    Step("jquery_implicits"),
+    Step("jquery_implicits", "implicits_code"),
     Step("step16"),
 
 

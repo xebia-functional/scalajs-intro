@@ -5,12 +5,12 @@ import common.messages.{Media, User}
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
-object Implicits {
+object JqueryImplicits {
 
   @JSExport
   def main() = {
 
-    implicit val userPrinter = new BasicUserPrinter
+    implicit val userPrinter = new JQueryUserPrinter
 
     val rafaUser = User("Rafa", Some("Paradela"), "41130", Media("pic400.jpg", "pic200.jpg", "pic50.jpg"))
     val fedeUser = User("Fede", None, "41130", Media("pic400.jpg", "pic200.jpg", "pic50.jpg"))
