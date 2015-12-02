@@ -6,7 +6,6 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
 import upickle._
 import JsParser._
 
-import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport

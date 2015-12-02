@@ -1,0 +1,22 @@
+<h1>For Comprehensions</h1>
+
+
+<pre><code>def getUsers: Future[UserResponse] =
+    Ajax.get("http://localhost:9000/api/user/20") map { request =>
+        read[UserResponse](request.responseText)
+    }
+
+def getWeather: Future[WeatherResponse] =
+    Ajax.get("http://aweatherprovider") map { request =>
+        read[WeatherResponse](request.responseText)
+    }
+</code></pre>
+
+
+<pre><code>for {
+    userResponse <- getUsers
+    weatherResponse <- getWeather
+} yield {
+    weatherResponse.weathers foreach printWeather
+    userResponse.users foreach printUser
+}</code></pre>

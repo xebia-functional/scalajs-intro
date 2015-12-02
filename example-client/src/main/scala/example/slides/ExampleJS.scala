@@ -26,7 +26,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-    move(17)
+    move(30)
 
   }
 
@@ -64,7 +64,9 @@ object ExampleJS extends js.JSApp {
     Step("step15_a"),
     Step("step15_a", "step15_exp"),
     Step("jquery_implicits"),
-    Step("jquery_implicits", "implicits_code"),
+    Step("jquery_implicits", "jquery_implicits_code"),
+    Step("for_comprehension"),
+    Step("for_comprehension", "for_comprehension_code"),
     Step("step16"),
 
 

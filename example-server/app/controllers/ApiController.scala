@@ -1,6 +1,6 @@
 package controllers
 
-import common.messages.{UserResponse, User, Weather}
+import common.messages.{WeatherResponse, UserResponse, User, Weather}
 import controllers.messages.{ApiWeatherResponse, Conversions, ApiRandomUserResponse}
 import play.api.Play
 import play.api.libs.json.Json
@@ -36,7 +36,7 @@ object ApiController
     Play.current.configuration.getString("openweather.appid") match {
       case Some(appId) =>
         weatherRequest(appId, countryCode, postalCode) map { seq =>
-          Ok(Json.toJson(seq))
+          Ok(Json.toJson(WeatherResponse(seq)))
         }
       case _ =>
         Future.successful(Unauthorized("Property 'openweather.appid' not found"))

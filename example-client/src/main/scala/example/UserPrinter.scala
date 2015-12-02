@@ -5,6 +5,7 @@ import org.scalajs.dom.document
 import org.scalajs.jquery.{jQuery => $}
 
 trait UserPrinter {
+
   def print(user: User)
 
   def name(user: User): String = user.lastName match {

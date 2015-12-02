@@ -32,5 +32,6 @@ object CommonImplicits {
   implicit val userWrites: Writes[User] = Json.writes[User]
   implicit val userResponseWrites: Writes[UserResponse] = Json.writes[UserResponse]
   implicit val weatherWrites: Writes[Weather] = Json.writes[Weather]
+  implicit val weatherResponseWrites: Writes[WeatherResponse] = Json.writes[WeatherResponse]
 
 }
