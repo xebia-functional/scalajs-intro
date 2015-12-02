@@ -1,6 +1,6 @@
 package controllers
 
-import commons.messages.Weather
+import common.messages.{UserResponse, User, Weather}
 import controllers.messages.{ApiWeatherResponse, Conversions, ApiRandomUserResponse}
 import play.api.Play
 import play.api.libs.json.Json
@@ -28,7 +28,7 @@ object ApiController
     futureResponse map { response =>
       val randomUserResponse = response.json.as[ApiRandomUserResponse]
       val userSeq = randomUserResponse.results map (ur => toUser(ur.user))
-      Ok(Json.toJson(userSeq))
+      Ok(Json.toJson(UserResponse(userSeq)))
     }
   }
 
