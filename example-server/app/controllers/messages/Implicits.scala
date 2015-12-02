@@ -1,6 +1,6 @@
 package controllers.messages
 
-import commons.messages.{Weather, User}
+import common.messages._
 import play.api.libs.json.{Writes, Json, Reads}
 
 object ApiRandomUserImplicits {
@@ -28,7 +28,9 @@ object ApiWeatherImplicits {
 
 object CommonImplicits {
 
+  implicit val mediaWrites: Writes[Media] = Json.writes[Media]
   implicit val userWrites: Writes[User] = Json.writes[User]
+  implicit val userResponseWrites: Writes[UserResponse] = Json.writes[UserResponse]
   implicit val weatherWrites: Writes[Weather] = Json.writes[Weather]
 
 }

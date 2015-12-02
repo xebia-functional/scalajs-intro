@@ -1,0 +1,10 @@
+<h1 id="dominteraction">Web services</h1>
+
+
+<pre><code>val url ="http://anyuserprovider.com/user/20"
+
+Ajax.get(url).onSuccess{ case xhr =>
+    addPre(document.body, js.JSON.stringify(
+        js.JSON.parse(xhr.responseText), space=4))}
+</code></pre>
+

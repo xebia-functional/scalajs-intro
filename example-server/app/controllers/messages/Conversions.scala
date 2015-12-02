@@ -1,15 +1,20 @@
 package controllers.messages
 
-import commons.messages.{Weather, User}
+import common.messages.{Media, Weather, User}
+
 import scala.util.Random
 
 trait Conversions {
 
-  def toUser(apiUser: ApiUser): User =
+  def toUser(apiUser: ApiUser): User = {
     User(
       firstName = apiUser.name.first,
-      lastName = apiUser.name.last,
-      postalCode = apiUser.location.zip.toString)
+      lastName = if(Random.nextBoolean()) Some(apiUser.name.last) else None,
+      postalCode = apiUser.location.zip.toString,
+      pictures = toMedia(apiUser.picture))
+  }
+
+  def toMedia(apiPicture: ApiPicture): Media = Media(apiPicture.large, apiPicture.medium, apiPicture.thumbnail)
 
   def iconURL(icon: String) = s"http://openweathermap.org/img/w/$icon.png"
 

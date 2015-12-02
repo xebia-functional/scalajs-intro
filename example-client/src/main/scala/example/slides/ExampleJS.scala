@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.JSExport
 object ExampleJS extends js.JSApp {
 
   def main(): Unit = {
-    goHome()
+//    goHome()
 //    $.ajaxSetup(Map("cache" -> false))
 
     $("body").keydown((event: dom.KeyboardEvent) => {
@@ -26,7 +26,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-//    move(0¡)
+    move(17)
 
   }
 
@@ -35,39 +35,37 @@ object ExampleJS extends js.JSApp {
   def goHome() = selectStep(home)
 
   val steps = Seq(
-    Step("step00"),
-    Step("step01_a"),
-    Step("step01_b"),
-    Step("step01_c"),
-    Step("step01_d"),
-    Step("step01_e"),
-    Step("step01_f"),
-    Step("step01"),
-    Step("step02"),
-//    Step("step03"),
-    Step("step04"),
-    Step("step04_fp"),
-    Step("step05"),
-//    Step("step06"),
-    Step("step07"),
-    Step("step08"),
-    Step("step09"),
-    Step("step10"),
-    Step("step10", "step10_exp"),
-    Step("step11"),
-    Step("step11", "step11_exp"),
-    Step("step12"),
-    Step("step12", "step12_exp"),
-    Step("step13"),
-    Step("step14"),
-    Step("step14", "step13_exp"),
+    Step("about_us"),
+    Step("surprising_behaviour_01"),
+    Step("surprising_behaviour_02"),
+    Step("surprising_behaviour_03"),
+    Step("surprising_behaviour_04"),
+    Step("surprising_behaviour_05"),
+    Step("surprising_behaviour_06"),
+    Step("js_ugly_face"),
+    Step("web_platform_goodies"),
+    Step("what_is_scalajs"),
+    Step("functional_programming"),
+    Step("server_client_sharing_code"),
+    Step("start_using_scalajs"),
+    Step("start_using_scalajs_2"),
+    Step("start_using_scalajs_2", "hello_world"),
+    Step("case_classes"),
+    Step("dom_interaction", "dom_interaction_code"),
+    Step("implicits"),
+    Step("implicits", "implicits_code"),
+    Step("webservice_ajax"),
+    Step("webservice_ajax", "webservice_ajax_code"),
+    Step("webservice_enriched"),
+    Step("webservice_enriched", "webservice_enriched_code"),
+    Step("webservice_enriched", "user_interaction_code"),
     Step("step15"),
     Step("step15_b"),
     Step("step15_a"),
     Step("step15_a", "step15_exp"),
     Step("step16"),
-    Step("step16", "step16_exp"),
-    Step("step16_a", "step16_a_exp"),
+
+
     Step("step17"),
     Step("step17", "step17_exp"),
     Step("step18"),
