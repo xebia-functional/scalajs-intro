@@ -4,12 +4,12 @@ import org.scalajs.dom
 import org.scalajs.jquery.{jQuery => $}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSName, JSExport}
 
 object ExampleJS extends js.JSApp {
 
   def main(): Unit = {
-//    goHome()
+    goHome()
 //    $.ajaxSetup(Map("cache" -> false))
 
     $("body").keydown((event: dom.KeyboardEvent) => {
@@ -26,7 +26,7 @@ object ExampleJS extends js.JSApp {
       }
     })
 
-    move(30)
+//    move(29)
 
   }
 
@@ -51,6 +51,7 @@ object ExampleJS extends js.JSApp {
     Step("start_using_scalajs_2"),
     Step("start_using_scalajs_2", "hello_world"),
     Step("case_classes"),
+    Step("dom_interaction"),
     Step("dom_interaction", "dom_interaction_code"),
     Step("implicits"),
     Step("implicits", "implicits_code"),
@@ -58,28 +59,16 @@ object ExampleJS extends js.JSApp {
     Step("webservice_ajax", "webservice_ajax_code"),
     Step("webservice_enriched"),
     Step("webservice_enriched", "webservice_enriched_code"),
-    Step("webservice_enriched", "user_interaction_code"),
-    Step("step15"),
-    Step("step15_b"),
-    Step("step15_a"),
-    Step("step15_a", "step15_exp"),
+    Step("user_interaction"),
+    Step("user_interaction", "user_interaction_code"),
+    Step("jquery"),
+    Step("jquery_interaction"),
+    Step("jquery_interaction", "jquery_code"),
     Step("jquery_implicits"),
     Step("jquery_implicits", "jquery_implicits_code"),
-    Step("for_comprehension"),
-    Step("for_comprehension", "for_comprehension_code"),
-    Step("step16"),
-
-
-    Step("step17"),
-    Step("step17", "step17_exp"),
-    Step("step18"),
-    Step("step18", "step18_exp"),
-    Step("step19"),
-    Step("step19", "step19_exp"),
-    Step("step20"),
-    Step("step21"),
-    Step("step22"),
-    Step("step23"))
+    Step("optimized"),
+    Step("scala_exercises"),
+    Step("thanks_for_coming"))
 
 
   def selectStep(step: Step): Unit = {
@@ -124,6 +113,8 @@ object ExampleJS extends js.JSApp {
     $("#left_wrapper").fadeOut(500, "linear", callback = { (data: js.Any) =>
       $.get(url = s"assets/subpages/$pageName.html", success = { (data: js.Any) =>
         $("#left_wrapper").html(data.toString).fadeIn(500)
+        js.Dynamic.global.colourify()
+
       })
     })
   }

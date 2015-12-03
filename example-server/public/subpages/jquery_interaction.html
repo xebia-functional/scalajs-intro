@@ -1,0 +1,16 @@
+<h1>User interaction with jQuery</h1>
+
+<p>The same example with jQuery:</p>
+
+<pre><code>$("body").append($("&lt;input&gt;").attr("id", "search").keyup((e: dom.Event) => {
+  filterUsers()
+}))
+
+$.get(url = "http://localhost:9000/api/user/20", success = { (data: js.Any) =>
+  read[UserResponse](js.JSON.stringify(data)).users.foreach(printUser)
+})</code></pre>
+
+<pre><code>def filterUsers(): Unit = $("div").each({ (f: Any, div: dom.Element) =>
+  if ($(div).text() contains $("#search").value().toString) $(div).show(200)
+  else $(div).hide(200)
+})</code></pre>

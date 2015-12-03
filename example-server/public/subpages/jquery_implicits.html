@@ -3,17 +3,21 @@
 <pre><code>class JQueryUserPrinter extends UserPrinter {
 
     override def print(user: User): Unit = {
-        val userNode = $("&lt;div&gt;&lt;/div&gt;").text(name(user))
-        $("body").append(userNode)
+        val footer = $("&lt;div&gt;&lt;/div&gt;")
+            .append($("&lt;h2&gt;&lt;/h2&gt;")
+            .text(name(user)))
+            .append($("&lt;p&gt;&lt;/p&gt;")
+            .text(s"Postal code: ${user.postalCode}"))
+
+        val element = $("&lt;div&gt;&lt;/div&gt;")
+            .attr(Map(
+                "class" -&gt; "userWrapper",
+                "style" -&gt; s"background-image:url(${user.pictures.medium})").toJSDictionary)
+            .append(footer)
+            .hide()
+            .fadeIn(scala.util.Random.nextInt(10000))
+        
+        $("body").append(element)
     }
 
 }</code></pre>
-
-<pre><code>def printUser(user: User)(implicit p: UserPrinter) =
-    p.print(user)
-</code></pre>
-
-<pre><code>implicit val userPrinter = new JQueryUserPrinter</code></pre>
-
-<pre><code>printUser(rafaUser)
-printUser(fedeUser)</code></pre>

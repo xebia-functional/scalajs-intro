@@ -170,8 +170,7 @@ a{
   border-radius: 70px;
 }
 
-pre{background-color: #ffffff; font-size: 12px; color:#D6EDF5; border: 0px solid red; }
-code{background-color: transparent; color: #000000; padding: 2px; line-height: 12px; vertical-align: middle;}
+pre{background-color: #ffffff; border: 0px solid red; }
 
 body.one #header, body.double #header{height: 120px}
 body.one #content, body.double #content{top:120px;
@@ -207,10 +206,8 @@ body.one #content>#content-left>#left_wrapper{font-size: 1.7em;}
 body.one #content>#content-left>#left_wrapper p{font-size: 1.1em;}
 body.one #content>#content-left>#left_wrapper li{font-size: 1.1em;}
 body.one #content>#content-left>#left_wrapper>pre{font-size: 0.8em; margin: 20px 0px;}
-body.one #content>#content-left>#left_wrapper>pre>code{color:#000000;}
 
 body.double #content>#content-left>#left_wrapper{font-size: 1.4em;}
 body.double #content>#content-left>#left_wrapper p{font-size: 1.1em;}
 body.double #content>#content-left>#left_wrapper li{font-size: 1.1em;}
 body.double #content>#content-left>#left_wrapper>pre{font-size: 0.8em; margin: 20px 0px;}
-body.double #content>#content-left>#left_wrapper>pre>code{color:#000000;}

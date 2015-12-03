@@ -36,8 +36,6 @@ object UserInteraction {
       if (div.textContent contains text) div.setAttribute("class", "shown")
       else div.setAttribute("class", "hidden")
     }
-
-
   }
 
   def printUser(user: User)(implicit printer: UserPrinter) = printer.print(user)

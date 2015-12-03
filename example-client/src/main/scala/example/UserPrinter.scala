@@ -2,6 +2,7 @@ package example
 
 import common.messages.User
 import org.scalajs.dom.document
+import scala.scalajs.js.JSConverters.JSRichGenMap
 import org.scalajs.jquery.{jQuery => $}
 
 trait UserPrinter {
@@ -28,8 +29,16 @@ class BasicUserPrinter extends UserPrinter {
 class JQueryUserPrinter extends UserPrinter {
 
   override def print(user: User): Unit = {
-    val userNode = $("<div></div>").text(name(user))
-    $("body").append(userNode)
-  }
+
+val footer = $("<div></div>").append($("<h2></h2>").text(name(user))).append($("<p></p>").text(s"Postal code: ${user.postalCode}"))
+
+val element = $("<div></div>")
+    .attr(Map("class" -> "userWrapper", "style" -> s"background-image:url(${user.pictures.medium})").toJSDictionary)
+    .append(footer)
+    .hide()
+    .fadeIn(scala.util.Random.nextInt(10000))
+
+$("body").append(element)
+}
 
 }

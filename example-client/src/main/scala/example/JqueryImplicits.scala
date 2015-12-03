@@ -1,22 +1,26 @@
 package example
 
-import common.messages.{Media, User}
-
+import common.messages.{User, UserResponse}
+import example.JsParser._
+import org.scalajs.dom
+import org.scalajs.jquery.{jQuery => $}
+import upickle._
+import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
 object JqueryImplicits {
 
   @JSExport
-  def main() = {
+  def main(): Unit = {
 
+    implicit val userReader = createUserReader
     implicit val userPrinter = new JQueryUserPrinter
 
-    val rafaUser = User("Rafa", Some("Paradela"), "41130", Media("pic400.jpg", "pic200.jpg", "pic50.jpg"))
-    val fedeUser = User("Fede", None, "41130", Media("pic400.jpg", "pic200.jpg", "pic50.jpg"))
+    $.get(url = "http://localhost:9000/api/user/20", success = { (data: js.Any) =>
+      read[UserResponse](js.JSON.stringify(data)).users.foreach(printUser)
+    })
 
-    printUser(rafaUser)
-    printUser(fedeUser)
   }
 
   def printUser(user: User)(implicit printer: UserPrinter) = printer.print(user)

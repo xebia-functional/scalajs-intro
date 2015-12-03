@@ -19,25 +19,21 @@ object ForComprehension {
     implicit val userReader = createUserReader
     implicit val userPrinter = new BasicUserPrinter
 
-    for {
-      userResponse <- getUsers
-      weatherResponse <- getWeather
-    } yield {
-      weatherResponse.weathers foreach printWeather
-      userResponse.users foreach printUser
-    }
+    getUsers map (_.foreach(user => {
+      getWeather(user.postalCode).map(w => especial(user.firstName, w.description))
+    }))
 
   }
 
-  def getUsers(implicit reader: Reader[UserResponse]): Future[UserResponse] =
+  def getUsers(implicit reader: Reader[UserResponse]): Future[Seq[User]] =
     Ajax.get("http://localhost:9000/api/user/20") map { request =>
       read[UserResponse](request.responseText)
-    }
+    } map (_.users)
 
-  def getWeather: Future[WeatherResponse] =
-    Ajax.get("http://localhost:9000/api/weather/es/41000") map { request =>
+  def getWeather(postalCode: String): Future[Weather] =
+    Ajax.get("http://localhost:9000/api/weather/es/"+postalCode) map { request =>
       read[WeatherResponse](request.responseText)
-    }
+    } map (_.weathers.head)
 
   def printUser(user: User)(implicit printer: UserPrinter) = printer.print(user)
 
@@ -45,5 +41,12 @@ object ForComprehension {
     val weatherNode = $("<div></div>").text(weather.description)
     $("body").append(weatherNode)
   }
+
+  def especial(name: String, weather: String) = {
+    val weatherNode = $("<div></div>").text(name + " - " + weather)
+    $("body").append(weatherNode)
+  }
+
+
 
 }
