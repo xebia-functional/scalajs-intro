@@ -1,0 +1,26 @@
+<h1 id="dominteraction">DOM interaction & Options</h1>
+
+<pre><code>libraryDependencies += &quot;org.scala-js&quot; %%% &quot;scalajs-dom&quot; % &quot;0.8.0&quot;
+</code></pre>
+
+<pre><code>import org.scalajs.dom
+import org.scalajs.dom.document
+</code></pre>
+
+<pre><code>def printUser(user: User): Unit = {
+    val userNode = document.createElement("div")
+    val textNode = document.createTextNode(name(user))
+    userNode.appendChild(textNode)
+    document.body.appendChild(userNode)
+}
+
+def name(user: User): String = user.lastName match {
+    case Some(lastName) => s"${user.firstName} $lastName"
+    case None => user.firstName
+}
+</code></pre>
+
+<p>Now we can create the HTML elements using this method:</p>
+
+<pre><code>printUser(rafaUser)
+printUser(fedeUser)</code></pre>

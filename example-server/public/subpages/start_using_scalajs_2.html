@@ -1,0 +1,26 @@
+<pre><code>package demo
+
+import scala.scalajs.js.JSApp
+import scala.scalajs.js.Dynamic.global
+
+object Hello extends JSApp {
+    def main(): Unit = {
+        global.alert(&quot;Hello world!&quot;)
+    }
+}
+</code></pre>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;A beautiful alert should appear!!&lt;p&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;./target/scala-2.11/demo-fastopt.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        demo.Hello().main();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>

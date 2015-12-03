@@ -1,0 +1,11 @@
+<h1>What about jQuery?</h1>
+
+<p>In <code>build.sbt</code>:</p>
+
+<pre><code>libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.8.0"</code></pre>
+
+<pre><code>skip in packageJSDependencies := false</code></pre>
+
+<p>Include the generated javascript dependencies file:</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;./target/scala-2.11/demo-jsdeps.js&quot;&gt;&lt;/script&gt;</code></pre>

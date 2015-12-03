@@ -1,0 +1,28 @@
+<h1 id="caseclasses">Case classes</h1>
+
+<p>They are regular <code>class</code> with special privilegies. </p>
+<!--La diferencia con class es que el compilador de Scala trata estas clases de una forma especial, permitiendo ciertas expresiones que no se permiten en clases normales.-->
+
+<pre><code>case class User(
+    firstName: String,
+    lastName: Option[String] = None,
+    postalCode: String,
+    pictures: Media)
+
+case class Media(
+    large: String,
+    medium: String,
+    thumbnail: String)
+</code></pre>
+
+<p>Case classes have a convenient way they can be created, <code>new</code> is not required</p>
+
+<pre><code>val rafaPics = Media("photo400.jpg", "photo200.jpg", "photo50.jpg")
+val rafaUser = User("Rafa", Some("Paradela"), "11130", rafaPics)
+</code></pre>
+<!--Son como classes normales, pero con ciertos privilegios -->
+
+<p>One can simply use the class name as a function. And compose nested instantiations.</p>
+
+<pre><code>val fedeUser = User("Fede", None, "41130", Media("pic400.jpg", "pic200.jpg", "pic50.jpg"))
+</code></pre>

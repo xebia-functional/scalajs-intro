@@ -9,3 +9,4 @@ target/
 /.idea/
 /.idea_modules/
 
+/*/logs/application.log

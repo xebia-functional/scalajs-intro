@@ -1,0 +1,18 @@
+<h1>User Interaction</h1>
+
+
+<pre><code>&lt;input type=&quot;text&quot; id=&quot;search&quot; onkeyup=&quot;example.UserInteraction().filterUsers();&quot;/&gt;
+</code></pre>
+
+
+<pre><code>@JSExport
+def filterUsers(): Unit = {
+  val text = document.getElementById("search").asInstanceOf[HTMLInputElement].value
+  val divs = document.getElementsByTagName("div")
+
+  0 to divs.length foreach { index =>
+    val div = divs.item(index).asInstanceOf[HTMLDivElement]
+    if (div.textContent contains text) div.setAttribute("class", "shown")
+    else div.setAttribute("class", "hidden")
+  }
+}</code></pre>
