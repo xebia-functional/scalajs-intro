@@ -21,7 +21,7 @@ object JqueryExample {
       filterUsers()
     }))
 
-    $.get(url = "http://localhost:9000/api/user/20", success = { (data: js.Any) =>
+    $.get(url = "/api/user/20", success = { (data: js.Any) =>
       read[UserResponse](js.JSON.stringify(data)).users.foreach(printUser)
     })
 

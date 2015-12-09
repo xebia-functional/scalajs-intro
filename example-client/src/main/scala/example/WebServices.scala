@@ -14,7 +14,7 @@ object WebServices  {
   @JSExport
   def main(): Unit = {
 
-    val url ="http://localhost:9000/api/user/20"
+    val url = "/api/user/20"
 
     Ajax.get(url).onSuccess{ case xhr =>
 

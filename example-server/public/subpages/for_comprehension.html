@@ -2,12 +2,12 @@
 
 
 <pre><code>def getUsers: Future[UserResponse] =
-    Ajax.get("http://localhost:9000/api/user/20") map { request =>
+    Ajax.get("http://api.com/user/20") map { request =>
         read[UserResponse](request.responseText)
     }
 
 def getWeather: Future[WeatherResponse] =
-    Ajax.get("http://aweatherprovider") map { request =>
+    Ajax.get("http://api.com/weather/11130") map { request =>
         read[WeatherResponse](request.responseText)
     }
 </code></pre>

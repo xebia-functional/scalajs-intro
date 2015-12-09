@@ -21,7 +21,7 @@ object UserInteraction {
     implicit val userPrinter = new BasicUserPrinter
 
 
-    Ajax.get("http://localhost:9000/api/user/20") map { request =>
+    Ajax.get("/api/user/20") map { request =>
       read[UserResponse](request.responseText)
     } onSuccess{ case response => response.users.foreach(printUser) }
 

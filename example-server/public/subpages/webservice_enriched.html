@@ -1,7 +1,7 @@
 <h1>Futures & High Order Functions</h1>
 
 
-<pre><code>Ajax.get("http://localhost:9000/api/user/20") map { request =>
+<pre><code>Ajax.get("http://api.com/user/20") map { request =>
     read[UserResponse](request.responseText)
 } onSuccess{ case response => response.users.foreach(printUser) }
 </code></pre>

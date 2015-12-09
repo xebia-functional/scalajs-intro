@@ -26,12 +26,12 @@ object ForComprehension {
   }
 
   def getUsers(implicit reader: Reader[UserResponse]): Future[Seq[User]] =
-    Ajax.get("http://localhost:9000/api/user/20") map { request =>
+    Ajax.get("/api/user/20") map { request =>
       read[UserResponse](request.responseText)
     } map (_.users)
 
   def getWeather(postalCode: String): Future[Weather] =
-    Ajax.get("http://localhost:9000/api/weather/es/"+postalCode) map { request =>
+    Ajax.get("/api/weather/es/"+postalCode) map { request =>
       read[WeatherResponse](request.responseText)
     } map (_.weathers.head)
 
